@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Filme</title>
+</head>
+<body>
+    <h1>Filme</h1>
+    <form th:action="@{/filmes/salvar}" th:object="${filme}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <p>Título: <input type="text" th:field="*{titulo}">
+           <span th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></span></p>
+
+        <p>Gênero: <input type="text" th:field="*{genero}">
+           <span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></span></p>
+
+        <p>Nota: <input type="number" step="0.1" th:field="*{nota}">
+           <span th:if="${#fields.hasErrors('nota')}" th:errors="*{nota}"></span></p>
+
+        <p>Ano: <input type="number" th:field="*{ano}">
+           <span th:if="${#fields.hasErrors('ano')}" th:errors="*{ano}"></span></p>
+
+        <button type="submit">Salvar</button>
+        <a href="/filmes">Cancelar</a>
+    </form>
+</body>
+</html>
