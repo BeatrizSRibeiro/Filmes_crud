@@ -2,27 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Filmes</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
 </head>
 <body>
-    <h1>Filmes</h1>
-    <a href="/filmes/novo">Novo filme</a>
-    <table border="1">
-        <tr>
-            <th>ID</th><th>Título</th><th>Gênero</th><th>Nota</th><th>Ano</th><th>Ações</th>
-        </tr>
-        <tr th:each="f : ${filmes}">
-            <td th:text="${f.id}"></td>
-            <td th:text="${f.titulo}"></td>
-            <td th:text="${f.genero}"></td>
-            <td th:text="${f.nota}"></td>
-            <td th:text="${f.ano}"></td>
-            <td>
-                <a th:href="@{/filmes/editar/{id}(id=${f.id})}">Editar</a>
-                <a th:href="@{/filmes/excluir/{id}(id=${f.id})}">Excluir</a>
-            </td>
-        </tr>
-    </table>
+    <header><h1> Catálogo de Filmes</h1></header>
+    <main>
+        <div class="card">
+            <div class="topo">
+                <h2>Filmes cadastrados</h2>
+                <a class="btn btn-novo" th:href="@{/filmes/novo}">＋ Novo filme</a>
+            </div>
+
+            <div class="tabela-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th><th>Título</th><th>Gênero</th>
+                            <th>Nota</th><th>Ano</th><th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="f : ${filmes}">
+                            <td th:text="${f.id}"></td>
+                            <td th:text="${f.titulo}"></td>
+                            <td th:text="${f.genero}"></td>
+                            <td><span class="nota" th:text="${f.nota}"></span></td>
+                            <td th:text="${f.ano}"></td>
+                            <td>
+                                <div class="acoes">
+                                    <a class="btn btn-editar" th:href="@{/filmes/editar/{id}(id=${f.id})}"> Editar</a>
+                                    <a class="btn btn-excluir" th:href="@{/filmes/excluir/{id}(id=${f.id})}"
+                                       onclick="return confirm('Excluir este filme?')"> Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(filmes)}">
+                            <td colspan="6" class="vazio">Nenhum filme cadastrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

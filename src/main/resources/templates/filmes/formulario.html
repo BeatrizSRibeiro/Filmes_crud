@@ -7,10 +7,12 @@
     <link rel="stylesheet" th:href="@{/css/estilo.css}">
 </head>
 <body>
-    <header><h1>🎬 Catálogo de Filmes</h1></header>
-    <main>
+    <header><h1> Catálogo de Filmes</h1></header>
+    <main style="max-width: 560px;">
         <div class="card">
-            <h2 th:text="${filme.id == null} ? 'Novo filme' : 'Editar filme'"></h2>
+            <div class="topo">
+                <h2 th:text="${filme.id == null} ? 'Novo filme' : 'Editar filme'"></h2>
+            </div>
 
             <form th:action="@{/filmes/salvar}" th:object="${filme}" method="post">
                 <input type="hidden" th:field="*{id}">
@@ -43,8 +45,10 @@
                     <span class="erro" th:if="${#fields.hasErrors('ano')}" th:errors="*{ano}"></span>
                 </div>
 
-                <button type="submit" class="btn">Salvar</button>
-                <a class="btn btn-cancelar" th:href="@{/filmes}">Cancelar</a>
+                <div class="botoes-form">
+                    <button type="submit" class="btn btn-novo"> Salvar</button>
+                    <a class="btn btn-cancelar" th:href="@{/filmes}">Cancelar</a>
+                </div>
             </form>
         </div>
     </main>
