@@ -1,0 +1,82 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f8;
+    margin: 0;
+    color: #222;
+}
+
+header {
+    background: #6b1d2e;
+    color: white;
+    padding: 16px 32px;
+}
+
+header h1 { margin: 0; font-size: 22px; }
+
+main {
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 0 16px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #6b1d2e;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn:hover { background: #4f1422; }
+.btn-editar { background: #2d6cdf; padding: 5px 10px; }
+.btn-excluir { background: #c0392b; padding: 5px 10px; }
+.btn-cancelar { background: #777; }
+
+table { width: 100%; border-collapse: collapse; }
+
+th {
+    background: #6b1d2e;
+    color: white;
+    text-align: left;
+    padding: 10px;
+}
+
+td { padding: 10px; border-bottom: 1px solid #ddd; }
+tr:hover td { background: #faf3f4; }
+
+.vazio { text-align: center; color: #777; padding: 24px; }
+
+.campo { margin-bottom: 16px; }
+
+label { display: block; font-weight: bold; margin-bottom: 4px; }
+
+input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.erro { color: #c0392b; font-size: 13px; margin-top: 4px; display: block; }
+input.invalido { border-color: #c0392b; }
